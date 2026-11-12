@@ -1126,7 +1126,7 @@ async function handleContactSubmit(event) {
             © {new Date().getFullYear()} Hand Work. All rights reserved.
           </span>
 
-          <span>Made with ♡ in Sétif, Algeria</span>
+          <span>Handcrafted with love, made to make moments special in setif ♡</span>
         </div>
       </footer>
 
