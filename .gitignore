@@ -31,3 +31,12 @@ Thumbs.db
 # User-specific files
 *.user
 *.suo
+# ASP.NET configuration and secrets
+**/appsettings*.json
+
+# Deployment folders
+**/publish*/
+**/deploy*/
+
+# ZIP archives (kept locally, not uploaded to GitHub)
+**/*.zip

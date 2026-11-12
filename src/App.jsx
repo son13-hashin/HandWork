@@ -5,7 +5,7 @@ import Users from "./Users";
 
 // IMPORTANT:
 // Change this URL if your ASP.NET Core backend uses another port.
-const API_URL = "http://localhost:5154";
+const API_URL = "";
 const families = [
   {
     id: 1,
@@ -56,7 +56,6 @@ async function readResponse(response) {
 
   return data;
 }
-
 function App() {
   const [showUsers, setShowUsers] = useState(false);
   const authToken = localStorage.getItem("handwork_token");
@@ -339,7 +338,7 @@ async function handleContactSubmit(event) {
       {/* ANNOUNCEMENT */}
       <div className="announcement">
         <span>✧</span>
-        HANDMADE WITH LOVE IN SÉTIF
+        S
         <span>✧</span>
       </div>
 

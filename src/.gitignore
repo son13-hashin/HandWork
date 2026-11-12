@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# ASP.NET Core
+**/bin/
+**/obj/
+
+# Deployment files
+**/publish*/
+**/deploy*/
+
+# Sensitive configuration
+**/appsettings*.json
+**/.env
+**/.env.*

@@ -132,15 +132,27 @@ builder.Services.AddSwaggerGen(options =>
 // CORS
 // ===================================
 
+var allowedOrigins = builder.Configuration
+    .GetSection("Cors:AllowedOrigins")
+    .Get<string[]>() ?? Array.Empty<string>();
+
+if (builder.Environment.IsDevelopment())
+{
+    allowedOrigins = allowedOrigins
+        .Concat(new[]
+        {
+            "http://localhost:5173",
+            "http://127.0.0.1:5173"
+        })
+        .ToArray();
+}
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
         policy
-            .WithOrigins(
-                "http://localhost:5173",
-                "http://127.0.0.1:5173"
-            )
+            .WithOrigins(allowedOrigins)
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
@@ -151,6 +163,8 @@ builder.Services.AddCors(options =>
 // ===================================
 
 var app = builder.Build();
+
+app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseStatusCodeHandling();
@@ -180,7 +194,7 @@ app.UseAuthorization();
 // ===================================
 // Temporary endpoint to test Error Handling
 
-app.MapGet("/", () =>
+app.MapGet("/api/health", () =>
 {
     return Results.Ok(new
     {
@@ -1850,6 +1864,7 @@ app.MapPost("/api/products/upload-image", async (
 
 })
 .RequireAuthorization("AdminOnly");
+app.MapFallbackToFile("index.html");
 app.Run();
 // ===================================
 // VALIDATION HELPER METHODS

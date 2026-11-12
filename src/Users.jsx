@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import "./Users.css";
 
-const API_URL = "http://localhost:5154/api";
+const API_URL = "/api";
 
 const ORDER_STATUSES = [
   "Pending",
